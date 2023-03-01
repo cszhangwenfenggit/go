@@ -1,10 +1,10 @@
 package main
 
 import (
-	"awesomeProject/section2/extend"
 	"fmt"
 	"log"
 	"os"
+	"pratice/section2/extend"
 	"time"
 )
 
