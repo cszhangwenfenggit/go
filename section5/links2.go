@@ -27,10 +27,9 @@ func Extract2(url string) ([]string, error) {
 	}
 
 	doc, err := html.Parse(resp.Body)
-
 	resp.Body.Close()
 	if err != nil {
-		return nil, fmt.Errorf("parse %s failed:%s", url, err)
+		return nil, fmt.Errorf("prase %s Html:%s", url, err)
 	}
 
 	var links []string
@@ -40,7 +39,6 @@ func Extract2(url string) ([]string, error) {
 				if a.Key != "href" {
 					continue
 				}
-
 				link, err := resp.Request.URL.Parse(a.Val)
 				if err != nil {
 					continue
@@ -55,11 +53,11 @@ func Extract2(url string) ([]string, error) {
 }
 
 func foreachNode(n *html.Node, pre func(n *html.Node)) {
-	if n != nil {
+	if pre != nil {
 		pre(n)
 	}
 
-	for c := n.FirstChild; c != nil; c = n.NextSibling {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		foreachNode(c, pre)
 	}
 }
