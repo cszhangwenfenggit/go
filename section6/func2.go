@@ -30,7 +30,7 @@ func main() {
 	p.code()
 	//p.debug()
 
-	//var t = &Gopher{"Go"}
+	var t = Gopher{"Go"}
 	//t.code()
-	//t.debug()
+	t.debug()
 }
